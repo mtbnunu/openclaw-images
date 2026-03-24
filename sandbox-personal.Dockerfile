@@ -4,4 +4,5 @@ USER root
 RUN chown -R sandbox:sandbox /home/linuxbrew/.linuxbrew
 
 USER sandbox
+ENV XDG_CONFIG_HOME=/workspace/.config/gog/config
 RUN brew install steipete/tap/gogcli
