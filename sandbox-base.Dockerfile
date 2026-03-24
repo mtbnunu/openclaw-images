@@ -44,4 +44,5 @@ RUN if [ "${INSTALL_BREW}" = "1" ]; then \
 fi
 
 # Default is sandbox, but allow BASE_IMAGE overrides to select another final user.
+RUN useradd -m -s /bin/bash ${FINAL_USER}
 USER ${FINAL_USER}
