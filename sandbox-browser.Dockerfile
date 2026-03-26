@@ -1,5 +1,3 @@
-# syntax=docker/dockerfile:1.7
-
 FROM openclaw-sandbox-base:latest
 
 USER root
@@ -18,7 +16,8 @@ RUN apt-get update \
     xvfb \
   && rm -rf /var/lib/apt/lists/*
 
-COPY --chmod=755 scripts/sandbox-browser-entrypoint.sh /usr/local/bin/openclaw-sandbox-browser
+COPY scripts/sandbox-browser-entrypoint.sh /usr/local/bin/openclaw-sandbox-browser
+RUN chmod 755 /usr/local/bin/openclaw-sandbox-browser
 
 USER sandbox
 WORKDIR /home/sandbox
