@@ -16,7 +16,7 @@ RUN apt-get update \
     xvfb \
   && rm -rf /var/lib/apt/lists/*
 
-COPY sandbox-browser-entrypoint.sh /usr/local/bin/openclaw-sandbox-browser
+COPY entrypoint.sh /usr/local/bin/openclaw-sandbox-browser
 RUN chmod 755 /usr/local/bin/openclaw-sandbox-browser
 
 USER sandbox
