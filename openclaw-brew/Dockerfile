@@ -1,5 +1,5 @@
 # Start from your OpenClaw base image
-FROM openclaw:local 
+FROM openclaw:latest 
 
 # Switch to root to install prerequisites and configure permissions
 USER root
