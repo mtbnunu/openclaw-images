@@ -1,9 +1,17 @@
 FROM openclaw-sandbox-base:latest
 
+ARG CLIENTSECRET_LOCATION
+ARG GOG_ACCOUNT
+ARG GOG_KEYRING_PASSWORD=gog
+ARG XDG_CONFIG_HOME=/workspace/.config/gog/config
+
 USER root
 RUN chown -R sandbox:sandbox /home/linuxbrew/.linuxbrew
 
 USER sandbox
-ENV XDG_CONFIG_HOME=/workspace/.config/gog/config
-ENV GOG_KEYRING_PASSWORD=gog
+ENV XDG_CONFIG_HOME=${XDG_CONFIG_HOME}
+ENV CLIENTSECRET_LOCATION=${CLIENTSECRET_LOCATION}
+ENV GOG_ACCOUNT=${GOG_ACCOUNT}
+ENV GOG_KEYRING_PASSWORD=${GOG_KEYRING_PASSWORD}
+
 RUN brew install steipete/tap/gogcli
