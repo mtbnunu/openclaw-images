@@ -6,9 +6,7 @@ USER root
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN --mount=type=cache,id=openclaw-sandbox-bookworm-apt-cache,target=/var/cache/apt,sharing=locked \
-  --mount=type=cache,id=openclaw-sandbox-bookworm-apt-lists,target=/var/lib/apt,sharing=locked \
-  apt-get update \
+RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     chromium \
     fonts-liberation \
@@ -17,7 +15,8 @@ RUN --mount=type=cache,id=openclaw-sandbox-bookworm-apt-cache,target=/var/cache/
     socat \
     websockify \
     x11vnc \
-    xvfb
+    xvfb \
+  && rm -rf /var/lib/apt/lists/*
 
 COPY --chmod=755 scripts/sandbox-browser-entrypoint.sh /usr/local/bin/openclaw-sandbox-browser
 
